@@ -774,8 +774,9 @@ h2{
   }
   .search__bar{
     width: 250px;
+    margin-left: -100px;
   }
   .filter__container{
-    margin-left: 350px;
+    margin-left: 250px;
   }
 }
