@@ -761,6 +761,10 @@ h2{
   }
   .searching__img{
     height: 300px;
+    margin-left: 0;
+  }
+  .search__form{
+    display: flex;
   }
   .searching__img--container{
     height: 50vh;
@@ -769,9 +773,9 @@ h2{
     display: none;
   }
   .search__bar{
-    width: 300px;
+    width: 250px;
   }
   .filter__container{
-    margin-left: 420px;
+    margin-left: 350px;
   }
 }
