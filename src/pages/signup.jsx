@@ -8,8 +8,8 @@ function Signup() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
+    const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -20,19 +20,19 @@ function Signup() {
             <div className="signup__info">
                 <h1>Sign Up Now</h1>
                 <form className="signup__form">
-                <label htmlFor="fname">First Name</label>
+                <label htmlFor="fName">First Name</label>
                     <input 
                     type="text"
-                    id='fname'
-                    value={fname}
-                    onChange={(e) => setEmail(e.target.value)} 
+                    id='fName'
+                    value={fName}
+                    onChange={(e) => setFName(e.target.value)} 
                     />
-                    <label htmlFor="lname">Last Name</label>
+                    <label htmlFor="lName">Last Name</label>
                     <input 
                     type="text"
-                    id='lname'
-                    value={lname}
-                    onChange={(e) => setEmail(e.target.value)} 
+                    id='lName'
+                    value={lName}
+                    onChange={(e) => setLName(e.target.value)} 
                     />
                     <label htmlFor="email">Email Address</label>
                     <input 

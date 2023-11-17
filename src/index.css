@@ -740,17 +740,17 @@ h2{
   .searching__img{
     height: 400px;
   }
-  .login__info{
+  .login__info h1{
     margin-left: 0;
   }
   .login__form input{
-    width: 200px;
+    width: 250px;
   }
-  .signup__info{
+  .signup__info h1{
     margin-left: 0;
   }
   .signup__form input{
-    width: 200px;
+    width: 250px;
   }
   
 }
