@@ -60,7 +60,7 @@ function Random() {
                 <h2>Status: {anime.status}</h2>
                 <p>Description: {anime.synopsis}</p>
                 <h2>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
-                <button className="refresh" onClick={(() =>refresh())}>Reset</button>
+                <button className="refresh" onClick={(() =>refresh())}>Click to Randomise</button>
               </div>
             </div>
           )
