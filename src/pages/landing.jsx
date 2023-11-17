@@ -24,7 +24,7 @@ function Landing() {
                 <div className="landing__header__info">
                 <h1>Welcome to AnimeLibrary</h1>
                 <p>
-                    AnimeLibrary contains <span className='highlight'>over 5000 plus</span> animes,
+                    AnimeLibrary contains <span className='highlight'>over 5000</span> animes,
                      find what fits you and when you do create your  
                      <span className='highlight'> anime list</span> with us and we'll keep it safe
                 </p>
