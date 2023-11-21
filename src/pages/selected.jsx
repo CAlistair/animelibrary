@@ -57,7 +57,7 @@ function Selected() {
                 <h2>Popularity: {anime.popularity}</h2>
                 <h2>Year: {anime.year}</h2>
                 <p>Description: {anime.synopsis}</p>
-                <h2>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
+                <h2 className='description__small'>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
               </div>
             </div>
           )

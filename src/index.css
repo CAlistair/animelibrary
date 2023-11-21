@@ -258,6 +258,7 @@ h2{
 
 #search{
   background-color: #F5F3F3;
+  height: 100vh
 }
 
 .search__form{
@@ -328,6 +329,10 @@ h2{
   width: 300px;
   border-radius: 20px;
   transition: all 500ms ease-in-out;
+}
+
+.description__small{
+  display: none;
 }
 
 .anime__info:hover{
@@ -752,6 +757,9 @@ h2{
   .signup__form input{
     width: 250px;
   }
+  .description__small{
+    display: block;
+  }
   
 }
 
@@ -768,6 +776,11 @@ h2{
   }
   .searching__img--container{
     height: 50vh;
+  }
+
+  .random__img--skeleton{
+    width: 200px;
+    height: 300px;
   }
   .button-search{
     display: none;
