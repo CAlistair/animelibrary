@@ -5,13 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faBookmark, faXmark  } from "@fortawesome/free-solid-svg-icons";
+import { store } from './app/store';
+import { Provider } from 'react-redux';
 
 library.add(faBars, faBookmark, faXmark  );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>
 );
 

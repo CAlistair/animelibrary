@@ -10,6 +10,7 @@ import Random from "./pages/random";
 import Selected from "./pages/selected";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import Account from "./pages/account";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path=":id" element={<Selected/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/account" element={<Account/>}/>
         </Routes>
       </>
     </Router>

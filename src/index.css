@@ -258,7 +258,18 @@ h2{
 
 #search{
   background-color: #F5F3F3;
-  height: 100vh
+}
+
+.search__container{
+  height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .search__form{
@@ -654,6 +665,23 @@ h2{
   color: #F5F3F3;
 }
 
+/* Account */
+
+#account{
+  background-color: #F5F3F3;
+}
+
+.account__container{
+  height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
 /* Footer */
 
 #footer{
@@ -810,5 +838,13 @@ h2{
   }
   .filter__container{
     margin-left: 250px;
+  }
+
+  .info{
+    height: 100vh;
+  }
+
+  #selected{
+    height: 100vh;
   }
 }
