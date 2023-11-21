@@ -782,6 +782,25 @@ h2{
     width: 200px;
     height: 300px;
   }
+  
+  .title--skeleton{
+    width: 250px;
+    height: 40px;
+  }
+  
+  .episodes--skeleton{
+    width: 100px;
+  }
+  
+  .status--skeleton{
+    width: 150px;
+  }
+  
+  .description--skeleton{
+    width: 170px;
+    height: 70px;
+  }
+
   .button-search{
     display: none;
   }
