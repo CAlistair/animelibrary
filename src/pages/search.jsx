@@ -63,7 +63,7 @@ function Search() {
     <section id="search">
                   <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             {isMenuOpen && <Menu/>}
-      <div className="search__container">
+      <div className="container">
         <div className="search__form">
           <input
             id="input__box"

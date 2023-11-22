@@ -3,8 +3,8 @@ import Menu from '../components/menu';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import { Link, useNavigate } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux';
-import { login } from '../app/userSlice';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { login, selectUser } from '../app/userSlice';
 import { auth } from "../firebase"
 
 function Login() {
@@ -18,7 +18,6 @@ function Login() {
     const signIn = (e) => {
       e.preventDefault();
 
-
       // email and password inputs are ran through and dispacthed with login action
       auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
         dispatch(
@@ -28,12 +27,11 @@ function Login() {
             displayName: userAuth.user.displayName,
           })
         );
-        
+        navigate("/account")
         // .push pushes the user to another route if sign in successful
       }).catch((error) => alert(error.message))
       // If sign in not successful error messgae
     };
-
 
   return (
     <section id='login'>

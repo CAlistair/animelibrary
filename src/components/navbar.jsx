@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { logout, selectUser } from "../app/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../firebase";
 
 function Navbar({ isMenuOpen, setIsMenuOpen }) {
-  console.log(isMenuOpen);
+  
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutOfApp = () =>{
+    auth.signOut().then(() =>{
+        dispatch(logout())
+        navigate('/')
+    }).catch((error) => alert(error.message))
+}
+
+
 
   return (
     <nav>
@@ -29,9 +44,16 @@ function Navbar({ isMenuOpen, setIsMenuOpen }) {
             </Link>
           </li>
         </ul>
+        { user ? (
+          <Link to="/account">
+          <button className="btn login">Account</button>
+        </Link>
+        ) : (
         <Link to="/login">
           <button className="btn login">Login</button>
         </Link>
+        )
+        }
         <div
           className="btn__menu"
           onClick={() => setIsMenuOpen(!isMenuOpen)}

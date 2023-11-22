@@ -14,7 +14,10 @@ function Landing() {
 
   return (
     <section id='landing'>
-            <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+            <Navbar 
+            isMenuOpen={isMenuOpen} 
+            setIsMenuOpen={setIsMenuOpen}
+            />
             {isMenuOpen && <Menu/>}
         <div className="container">
             <div className="landing__header">
