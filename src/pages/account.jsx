@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Menu from "../components/menu";
 import Footer from "../components/footer";
@@ -7,8 +7,10 @@ import { logout, selectUser } from "../app/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-function Account({ isMenuOpen, setIsMenuOpen }) {
+function Account() {
+
   const user = useSelector(selectUser);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,13 +24,13 @@ function Account({ isMenuOpen, setIsMenuOpen }) {
   return (
     <section className="account">
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      {isMenuOpen && <Menu />}
+            {isMenuOpen && <Menu/>}
       <div className="account__container">
         <div className="account--info">
           <div className="account--header">
               <h1>Account: {user?.displayName}</h1>
               <Link to="/login">
-                <button className="btn login" onClick={logoutOfApp}>Logout</button>
+                <button className="btn" onClick={logoutOfApp}>Logout</button>
               </Link>
           </div>
           <div className="account--list">
