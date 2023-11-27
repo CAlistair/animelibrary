@@ -4,12 +4,16 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Footer from '../components/footer';
 import Menu from '../components/menu';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../app/userSlice';
 
 function Selected() {
   const { id } = useParams();
   const [anime, setAnime] = useState([]); // Set this to an empty array
   const [loading, setLoading] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useSelector(selectUser)
+  const [list, setList] = useState([])
   
   React.useEffect(() => {
     setLoading(true)
@@ -22,6 +26,11 @@ function Selected() {
     }, 1000)
     fetchAnime();
   },[])
+
+  function addAnimeToList(anime){
+    list.push(anime)
+    console.log(list)
+  }
 
   return (
     <section id='selected'>
@@ -58,6 +67,7 @@ function Selected() {
                 <h2>Year: {anime.year}</h2>
                 <p>Description: {anime.synopsis}</p>
                 <h2 className='description__small'>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
+                {user ? (<button className='btn' onClick={() => addAnimeToList(anime)}>Add to list</button>) : (<button></button>)}
               </div>
             </div>
           )

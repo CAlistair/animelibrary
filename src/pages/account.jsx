@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Menu from "../components/menu";
 import Footer from "../components/footer";
@@ -6,39 +6,65 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../app/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import img1 from "../assets/img-3.jpg";
+import axios from "axios";
 
 function Account() {
-
   const user = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const logoutOfApp = () =>{
-    auth.signOut().then(() =>{
-        dispatch(logout())
-        navigate('/')
-    }).catch((error) => alert(error.message))
-}
+  const logoutOfApp = () => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(logout());
+        navigate("/");
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const [recommend, setRecommend] = useState([]);
+
+  useEffect(() => {
+    async function fetchAnime() {
+      const { data } = await axios.get("https://api.jikan.moe/v4/seasons/now");
+      setRecommend(data.data);
+    }
+    fetchAnime();
+  }, []);
 
   return (
-    <section className="account">
+    <section id="account">
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            {isMenuOpen && <Menu/>}
+      {isMenuOpen && <Menu />}
       <div className="account__container">
         <div className="account--info">
           <div className="account--header">
-              <h1>Account: {user?.displayName}</h1>
-              <Link to="/login">
-                <button className="btn" onClick={logoutOfApp}>Logout</button>
-              </Link>
+            <h1>Account: {user?.displayName}</h1>
+            <Link to="/login">
+              <button className="btn" onClick={logoutOfApp}>
+                Logout
+              </button>
+            </Link>
           </div>
           <div className="account--list">
-            <h2>Hi</h2>
-            <h2>Loser</h2>
-            <h2>This is still in progress so,</h2>
-            <h2>DO me a favour and break this website</h2>
-            <h2>Make sure to report them too</h2>
+            {recommend
+              .map((data) => (
+                <div className="account--list--anime">
+                  <Link to={`${data.mal_id}`}>
+                    <figure>
+                      <img
+                        className="account--list--img"
+                        src={data.images.jpg.image_url}
+                        alt=""
+                      />
+                    </figure>
+                  </Link>
+                </div>
+              ))
+              .slice(0, 3)}
           </div>
         </div>
       </div>

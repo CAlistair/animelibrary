@@ -3,12 +3,14 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import axios from "axios";
 import Menu from "../components/menu";
+import { useSelector } from "react-redux";
+import { selectUser } from "../app/userSlice";
 
 function Random() {
   const [random, setRandom] = useState([]); // Set this to an empty array
   const [loading, setLoading] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const user = useSelector(selectUser)
 
   useEffect(() => {
     setLoading(true);
@@ -65,6 +67,7 @@ function Random() {
             </div>
           )
         ))}
+        {user ? (<button className='random__add btn' onClick="">Add to list</button>) : (<button></button>)}
       </div>
       <Footer />
     </section>

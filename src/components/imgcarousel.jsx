@@ -33,7 +33,6 @@ function Imgcarousel() {
     async function fetchAnime() {
       const { data } = await axios.get("https://api.jikan.moe/v4/seasons/now");
       setRecommend(data.data);
-      console.log(data.data)
     }
     fetchAnime();
   }, []);

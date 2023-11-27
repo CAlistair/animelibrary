@@ -20,7 +20,6 @@ function Search() {
       `https://api.jikan.moe/v4/anime?q=${searchAnime}&limit=20`
     );
     setSearched(data.data);
-    console.log(data.data);
     setTimeout(() => {
       setLoading(false);
     }, 1000)
