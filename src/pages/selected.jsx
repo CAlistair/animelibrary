@@ -7,14 +7,29 @@ import Menu from '../components/menu';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../app/userSlice';
 
-function Selected() {
+function Selected({ list, setList }) {
   const { id } = useParams();
   const [anime, setAnime] = useState([]); // Set this to an empty array
   const [loading, setLoading] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = useSelector(selectUser)
-  const [list, setList] = useState([])
   
+  function addToList(id){
+        // Check if the ID already exists in the list
+  const isDuplicate = list.includes(id);
+
+  if (!isDuplicate) {
+    // Add the ID to the list only if it's not a duplicate
+    setList((prevList) => [...prevList, id]);
+  } else {
+    console.log("ID already exists in the list");
+  }
+  }
+
+useEffect(() => {
+  console.log(list);
+}, [list]);
+
   React.useEffect(() => {
     setLoading(true)
     async function fetchAnime(){
@@ -27,10 +42,6 @@ function Selected() {
     fetchAnime();
   },[])
 
-  function addAnimeToList(anime){
-    list.push(anime)
-    console.log(list)
-  }
 
   return (
     <section id='selected'>
@@ -67,7 +78,7 @@ function Selected() {
                 <h2>Year: {anime.year}</h2>
                 <p>Description: {anime.synopsis}</p>
                 <h2 className='description__small'>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
-                {user ? (<button className='btn' onClick={() => addAnimeToList(anime)}>Add to list</button>) : (<button></button>)}
+                {user ? (<button className='btn' onClick={() => addToList(id)}>Add to list</button>) : (<button></button>)}
               </div>
             </div>
           )

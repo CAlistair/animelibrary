@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../app/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import img1 from "../assets/img-3.jpg";
 import axios from "axios";
 
 function Account() {
@@ -52,7 +51,7 @@ function Account() {
           <div className="account--list">
             {recommend
               .map((data) => (
-                <div className="account--list--anime">
+                <div className="account--list--anime" key={data}>
                   <Link to={`${data.mal_id}`}>
                     <figure>
                       <img
@@ -64,7 +63,7 @@ function Account() {
                   </Link>
                 </div>
               ))
-              .slice(0, 3)}
+              .slice(0, 6)}
           </div>
         </div>
       </div>

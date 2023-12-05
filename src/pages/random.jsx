@@ -5,8 +5,10 @@ import axios from "axios";
 import Menu from "../components/menu";
 import { useSelector } from "react-redux";
 import { selectUser } from "../app/userSlice";
+import { useParams } from "react-router-dom";
 
-function Random() {
+function Random({ list, setList}) {
+  const {id} = useParams();
   const [random, setRandom] = useState([]); // Set this to an empty array
   const [loading, setLoading] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +30,22 @@ function Random() {
   function refresh(){
     window.location.reload()
   }
+
+  function addToList(id){
+      // Check if the ID already exists in the list
+    const isDuplicate = list.includes(id);
+
+    if (!isDuplicate) {
+      // Add the ID to the list only if it's not a duplicate
+      setList((prevList) => [...prevList, id]);
+    } else {
+      console.log("ID already exists in the list");
+    }
+  }
+
+useEffect(() => {
+  console.log(list);
+}, [list]);
 
   return (
     <section id="random">
@@ -67,7 +85,7 @@ function Random() {
             </div>
           )
         ))}
-        {user ? (<button className='random__add btn' onClick="">Add to list</button>) : (<button></button>)}
+        {user ? (<button className='random__add btn' onClick={() => addToList(random[0].mal_id)}>Add to list</button>) : (<button></button>)}
       </div>
       <Footer />
     </section>

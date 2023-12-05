@@ -27,7 +27,6 @@ function Imgcarousel() {
   };
 
   const [recommend, setRecommend] = useState([]);
-  const { mal_id } = useParams()
 
   useEffect(() => {
     async function fetchAnime() {

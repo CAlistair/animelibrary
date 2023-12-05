@@ -19,6 +19,8 @@ import { auth } from "./firebase";
 
 function App() {
   const dispatch = useDispatch();
+  const [list, setList] = useState([])
+
 
   //persistence login
   //runs under a specific condition and [] makes it run once when components load
@@ -48,13 +50,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing/>}/>
           <Route path="/search" element={<Search/>}/>
-          <Route path="/search/:id" element={<Selected/>}/>
-          <Route path="/random" element={<Random/>}/>
-          <Route path=":id" element={<Selected/>}/>
+          <Route path="/search/:id" element={<Selected list={list} setList={setList}/>}/>
+          <Route path="/random" element={<Random list={list} setList={setList}/>}/>
+          <Route path=":id" element={<Selected list={list} setList={setList}/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/account" element={<Account/>}/>
-          <Route path="/account/:id" element={<Selected/>}/>
+          <Route path="/account/:id" element={<Selected list={list} setList={setList}/>}/>
         </Routes>
       </>
     </Router>
