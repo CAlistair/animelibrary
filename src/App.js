@@ -55,7 +55,7 @@ function App() {
           <Route path=":id" element={<Selected list={list} setList={setList}/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/account" element={<Account/>}/>
+          <Route path="/account" element={<Account list={list} setList={setList}/>}/>
           <Route path="/account/:id" element={<Selected list={list} setList={setList}/>}/>
         </Routes>
       </>

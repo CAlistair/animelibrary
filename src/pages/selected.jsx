@@ -14,10 +14,11 @@ function Selected({ list, setList }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = useSelector(selectUser)
   
+
+  
   function addToList(id){
         // Check if the ID already exists in the list
   const isDuplicate = list.includes(id);
-
   if (!isDuplicate) {
     // Add the ID to the list only if it's not a duplicate
     setList((prevList) => [...prevList, id]);
@@ -42,6 +43,10 @@ useEffect(() => {
     fetchAnime();
   },[])
 
+  function removeFromList(id) {
+    // Filter out the anime with the given ID from the list
+    setList((prevList) => prevList.filter((animeId) => animeId !== id));
+  }
 
   return (
     <section id='selected'>
@@ -78,7 +83,19 @@ useEffect(() => {
                 <h2>Year: {anime.year}</h2>
                 <p>Description: {anime.synopsis}</p>
                 <h2 className='description__small'>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
-                {user ? (<button className='btn' onClick={() => addToList(id)}>Add to list</button>) : (<button></button>)}
+                {user && (
+                  <>
+                    {list.includes(id) ? (
+                      <button className='btn--add--remove' onClick={() => removeFromList(id)}>
+                        Remove from List
+                      </button>
+                    ) : (
+                      <button className='btn--add--remove' onClick={() => addToList(id)}>
+                        Add to List
+                      </button>
+                    )}
+                  </>
+                )}
               </div>
             </div>
           )

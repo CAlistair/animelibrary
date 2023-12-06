@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import axios from "axios";
 
-function Account() {
+function Account({ list, setList}) {
   const user = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
@@ -24,15 +24,20 @@ function Account() {
       .catch((error) => alert(error.message));
   };
 
-  const [recommend, setRecommend] = useState([]);
+  const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    async function fetchAnime() {
-      const { data } = await axios.get("https://api.jikan.moe/v4/seasons/now");
-      setRecommend(data.data);
-    }
-    fetchAnime();
-  }, []);
+    const fetchData = async () => {
+      const myList = [];
+      for (const id of list) {
+          const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+          myList.push(data.data);
+      }
+      setMyList(myList);
+    };
+
+    fetchData();
+  }, [list]);
 
   return (
     <section id="account">
@@ -49,7 +54,7 @@ function Account() {
             </Link>
           </div>
           <div className="account--list">
-            {recommend
+            {myList
               .map((data) => (
                 <div className="account--list--anime" key={data}>
                   <Link to={`${data.mal_id}`}>
@@ -63,7 +68,7 @@ function Account() {
                   </Link>
                 </div>
               ))
-              .slice(0, 6)}
+              .slice(0, 12)}
           </div>
         </div>
       </div>
