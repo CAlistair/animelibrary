@@ -865,7 +865,7 @@ h2{
   }
   .searching__img{
     height: 300px;
-    margin-left: 0;
+    margin-left: -100px;
   }
   .search__form{
     display: flex;
