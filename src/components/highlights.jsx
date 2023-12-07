@@ -15,9 +15,10 @@ function Highlights() {
                     <FontAwesomeIcon className='landing__icon' icon="server" />
                     <h2><span className='highlight'>Wide Range</span></h2>
                     <p>
-                        Over 5000 plus animes to pick from
+                        Over 5000 animes to pick from
                     </p>
-                </div><div className="landing__container">
+                </div>
+                <div className="landing__container">
                     <FontAwesomeIcon className='landing__icon' icon="fast-forward" />
                     <h2><span className='highlight'>Fast and easy</span></h2>
                     <p>

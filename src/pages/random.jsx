@@ -99,7 +99,7 @@ function Random({ list, setList }) {
                   <h1>Title: {anime.title}</h1>
                   <h2>Episodes: {anime.episodes}</h2>
                   <h2>Status: {anime.status}</h2>
-                  <p>Description: {anime.synopsis}</p>
+                  <p>Description: {anime.synopsis || "None"}</p>
                   <h2 className="description__small">
                     Description:{" "}
                     <a className="highlight" href={anime.url} target="_blank">

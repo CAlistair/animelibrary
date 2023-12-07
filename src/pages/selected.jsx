@@ -81,7 +81,7 @@ useEffect(() => {
                 <h2>Status: {anime.status}</h2>
                 <h2>Popularity: {anime.popularity}</h2>
                 <h2>Year: {anime.year}</h2>
-                <p>Description: {anime.synopsis}</p>
+                <p>Description: {anime.synopsis || "None"}</p>
                 <h2 className='description__small'>Description: <a className='highlight' href={anime.url} target='_blank'>Read More</a></h2>
                 {user && (
                   <>
